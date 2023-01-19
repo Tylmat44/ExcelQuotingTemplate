@@ -200,49 +200,6 @@ Public Function SewerPrice(Data1 As Range) As Variant
     SewerPrice = price
 End Function
 
-Public Sub PrepareQuote()
-    Sheets("Itemized").Select
-    Range("Storm").Select
-    Selection.Copy
-    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
-        :=False, Transpose:=False
-    Range("Sewer").Select
-    Application.CutCopyMode = False
-    Selection.Copy
-    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
-        :=False, Transpose:=False
-    Application.CutCopyMode = False
-    Columns("K:N").EntireColumn.Delete
-    Columns("C:D").EntireColumn.Delete
-    
-    Dim newHour As Variant
-    Dim newMinute As Variant
-    Dim newSecond As Variant
-    Dim waitTime As Variant
-        
-    Application.DisplayAlerts = False
-    
-    Sheets("ADJUSTMENTS").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Sheets("Calculations").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Sheets("Info").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Sheets("Unit Quote").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Sheets("Freight Rates").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Sheets("Buttons").Select
-    ActiveWindow.SelectedSheets.Delete
-    Application.Wait (Now + #12:00:01 AM#)
-    Application.DisplayAlerts = True
-End Sub
-
 Public Function StormWeight(Data1 As Range, Data2 As Range, Data3 As Range) As Variant
     Dim height As Variant
     Dim structure As Variant
